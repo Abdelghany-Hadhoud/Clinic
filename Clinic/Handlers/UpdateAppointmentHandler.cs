@@ -19,7 +19,7 @@ namespace Clinic.Handlers
                 return default;
 
             var appointments = await _appointmentRepository.GetAppointmentsByDateAsync(command.AppointmentDate, command.Id);
-            if (appointments.Any() && appointments.Count > 1)
+            if (appointments != null && appointments.Any() && appointments.Count > 1)
                 return default;
 
             appointment.Name = command.Name;

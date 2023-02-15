@@ -16,7 +16,7 @@ namespace Clinic.Handlers
         public async Task<Appointment> Handle(CreateAppointmentCommand command, CancellationToken cancellationToken)
         {
             var appointments = await _appointmentRepository.GetAppointmentsByDateAsync(command.AppointmentDate, null);
-            if (appointments.Any() && appointments.Count > 1)
+            if (appointments != null && appointments.Any() && appointments.Count > 1)
                 return default;
 
             var appointment = new Appointment()
