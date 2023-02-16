@@ -1,0 +1,10 @@
+version: '3.4'
+
+services:
+  clinic:
+    image: ${DOCKER_REGISTRY-}clinic
+    build:
+      context: .
+      dockerfile: Clinic/Dockerfile
+
+
