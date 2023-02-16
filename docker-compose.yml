@@ -6,5 +6,21 @@ services:
     build:
       context: .
       dockerfile: Clinic/Dockerfile
+    depends_on:
+     - "postgres"
+    networks:
+      - aspnetcoreapp-network
 
+  postgres:
+    container_name: 'postgres'
+    image: postgres
+    environment:
+      # change this for a "real" app!
+      POSTGRES_PASSWORD: password
+    networks:
+      - aspnetcoreapp-network
+
+networks:
+  aspnetcoreapp-network:
+    driver: bridge
 
